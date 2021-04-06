@@ -10,7 +10,7 @@ getStarted:
     label: Project Name
     info: You are almost there! Set your project name
     desc: The project will be yours with owner access where you can create
-      workflows, view analytics and also invite others to your project.
+      workflows, view analytics and also invite others to your proj
   password:
     name: password
     label: Password
