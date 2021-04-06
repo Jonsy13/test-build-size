@@ -1,22 +1,16 @@
-name: buildSize-pipeline
+name: Compressed Size
+
 on:
   pull_request:
     branches:
-      - master
+      - '**'
 
 jobs:
-  buildsize:
+  build:
     runs-on: ubuntu-latest
-    steps: 
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: Build the frontend and find buildsize
-        shell: bash
-        run: |
-          cd frontend
-          npm i
-          npm run build
-          nonZipBuild="frontend/build/static/js/*.chunk.js"
-          ZippedBuild="frontend/build/static/js/*.chunk.js.gz"
-          echo `ls -hl "nonZipBuild" | awk '{total += $5} END {print total}'`
-          echo `ls -hl "ZippedBuild" | awk '{total += $5} END {print total}'`
+    steps:
+      - uses: actions/checkout@v2
+      - uses: preactjs/compressed-size-action@v1
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          cwd: 'frontend/'
