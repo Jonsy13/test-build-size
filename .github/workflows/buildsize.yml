@@ -16,3 +16,4 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           cwd: 'frontend/'
+          pattern: "./build/**/*.{js,css,html,json}"
